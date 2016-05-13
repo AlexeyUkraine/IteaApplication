@@ -19,4 +19,6 @@ public interface UserDAO {
 
     User findById(long user_id);     //find by id
 
+    User findByCred(String login, String password); //find by Credentials
+
 }

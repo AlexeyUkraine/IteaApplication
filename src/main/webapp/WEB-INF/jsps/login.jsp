@@ -15,7 +15,7 @@
 <body>
 <%
 
-    AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+    AbstractApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/servlet-context.xml");
     UserDAO dao = (UserDAO) context.getBean("userDAO");
 
     for(User u: dao.findAllUsers()){

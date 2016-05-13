@@ -12,7 +12,7 @@ import javax.persistence.Query;
 import java.util.List;
 
 
-@Repository(value= "userDAO")
+@Repository(value = "userDAO")
 public class UserDAOImpl implements UserDAO {
 
     protected EntityManager em;
@@ -36,7 +36,7 @@ public class UserDAOImpl implements UserDAO {
 //        return id;
         em.persist(user);
         em.flush();
-        return  user.getId();
+        return user.getId();
 
     }
 
@@ -96,6 +96,25 @@ public class UserDAOImpl implements UserDAO {
 //        return user;
         return em.find(User.class, user_id);
 
+
+    }
+
+    @Transactional
+    public User findByCred(String login, String password) {
+       // Query query = em.createQuery("SELECT c FROM User c WHERE c.credential.login=:loginparam AND c.credential.password=:passwordparam");
+        Query query = em.createQuery("SELECT c FROM User c WHERE c.credential.login=:loginparam");
+        query.setParameter("loginparam", login);
+        //query.setParameter("passwordparam", password);
+        try {
+            User user = (User) query.getSingleResult();
+            //password checking
+            if (user.getCredential().getPassword().equals(password)){
+            return user;
+            }else return null;
+
+        } catch (Exception e) {
+            return null;
+        }
 
     }
 

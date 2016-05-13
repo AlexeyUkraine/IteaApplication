@@ -1,28 +1,79 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0" metadata-complete="true">
 
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring/root-context.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+
+
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+
+    <!--<servlet>-->
+    <!--<servlet-name>Jsp</servlet-name>-->
+    <!--<jsp-file>WEB-INF/jsps/start-page.jsp</jsp-file>-->
+    <!--</servlet>-->
+
+    <!--<servlet-mapping>-->
+    <!--<servlet-name>Jsp</servlet-name>-->
+    <!--<url-pattern>/home</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+
+    <!--<servlet>-->
+    <!--<servlet-name>start</servlet-name>-->
+    <!--<servlet-class>controller.StartServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+    <!--<servlet-name>start</servlet-name>-->
+    <!--<url-pattern>/home</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!---->
+    <!--<servlet>-->
+    <!--<servlet-name>registration</servlet-name>-->
+    <!--<servlet-class>controller.RegistrationServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+    <!--<servlet-name>registration</servlet-name>-->
+    <!--<url-pattern>/RegistrationServlet</url-pattern>-->
+    <!--</servlet-mapping>-->
 
     <servlet>
-        <servlet-name>Jsp</servlet-name>
-        <jsp-file>/home.jsp</jsp-file>
+        <servlet-name>appServlet</servlet-name>
+        <servlet-class>
+            org.springframework.web.servlet.DispatcherServlet
+        </servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Jsp</servlet-name>
-        <url-pattern>/home</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>registration</servlet-name>
-        <servlet-class>controller.RegistrationServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>registration</servlet-name>
-        <url-pattern>/RegistrationServlet</url-pattern>
+        <servlet-name>appServlet</servlet-name>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
 
