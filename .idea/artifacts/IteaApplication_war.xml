@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="IteaApplication:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="itea.app-1.0-SNAPSHOT.war">
+    <root id="archive" name="itea.app.war">
       <element id="artifact" artifact-name="IteaApplication:war exploded" />
     </root>
   </artifact>

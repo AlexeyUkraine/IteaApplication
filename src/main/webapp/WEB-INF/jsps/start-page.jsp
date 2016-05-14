@@ -3,9 +3,13 @@
     <title>Registration Application</title>
 </head>
 
-<form action="authentification" method="post">
-    Login:<input type="text" name="login"><br>
-    Password:<input type="password" name="password"><br>
+<%--<form action="authentification" method="post">--%>
+<form action="/login" method="post">
+    <%--Login:<input type="text" name="name"><br>--%>
+    Login:<input type="text" name="j_username"><br>
+
+    <%--Password:<input type="password" name="password"><br>--%>
+    Password:<input type="password" name="j_password"><br>
     <input type="submit" value="Submit">
 </form>
 
