@@ -3,6 +3,7 @@ package dao;
 import hibernate.HiberUtil;
 import model.User;
 import org.hibernate.Session;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,7 +13,8 @@ import javax.persistence.Query;
 import java.util.List;
 
 
-@Repository(value = "userDAO")
+//@Repository(value = "userDAO")
+@Component(value = "userDAO")
 public class UserDAOImpl implements UserDAO {
 
     @PersistenceContext
