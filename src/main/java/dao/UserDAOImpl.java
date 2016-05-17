@@ -15,16 +15,17 @@ import java.util.List;
 @Repository(value = "userDAO")
 public class UserDAOImpl implements UserDAO {
 
-    protected EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
-    public EntityManager getEntityManager() {
+    private EntityManager getEntityManager() {
         return em;
     }
 
-    @PersistenceContext
-    public void setEntityManager(EntityManager entityManager) {
-        this.em = entityManager;
-    }
+//    @PersistenceContext
+//    public void setEntityManager(EntityManager entityManager) {
+//        this.em = entityManager;
+//    }
 
     @Transactional
     public long saveUser(User user) {
